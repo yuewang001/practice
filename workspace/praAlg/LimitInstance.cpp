@@ -41,6 +41,4 @@ int main()
 	 LimitInstance* single1= LimitInstance::getInstance();
 	 single1->printSomething();
 
-
-
 }

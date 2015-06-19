@@ -17,10 +17,11 @@ public:
 	virtual ~LimitInstance();
 	static LimitInstance*  _instance;
 	static LimitInstance* getInstance();
+	void printSomething();
 
 private:
 	LimitInstance();
-	void printSomething();
+
 };
 
 #endif /* LIMITINSTANCE_H_ */

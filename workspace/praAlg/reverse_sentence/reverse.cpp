@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <assert.h>
+#include <string>
 using namespace std;
 
 
@@ -16,54 +17,85 @@ void reverseWord(char *begin, char *end)
     assert(begin != NULL && end != NULL);
 
     char c;
-    while (begin < end)
+    char* first=begin;
+    char* last=end;
+    while (first < last)
     {
-        c = *begin;
-        *begin = *end;
-        *end = c;
-        ++begin;
-        --end;
+        c = *first;
+        *first = *last;
+        *last = c;
+        ++first;
+        --last;
     }
+    cout<<"after reverseWord: "<<begin<<endl;
     return;
 }
 
-void reserseSent(char* s)
+void reverseSent(char* s)
 {
 	if(s == NULL ) return;
 
 	//reverse all sentence
 	char* end= s;
 	while(*end != '\0') end++;
+	end--;
 	reverseWord(s, end);
 
 	char* begin=s;
 	bool isBlank = false;
 	end=s;
 
-	while(end != '\0')
+	while( *end != '\0')
 	{
+		/*if current is blank
+		 *     if next is blank
+		 *        end++
+		 *     if next is not blank
+		 *        end++
+		 *        blank = false
+		 *if current not blank
+		 *     if next is blank
+		 *     then xxxxxxx
+		 *
+		 *     if next is not blank
+		 *     end++
+		 *
+		 *
+		 *
+		 *
+		 */
 
-		if(*(end+1) != ' ')
+		if(isBlank)
 		{
-			//if current pint to null
-			if(isBlank)
+			if(*(end+1) == ' ')
 			{
 				end++;
-				begin=end;
 				continue;
+			}
+			else
+			{
+				begin=end+1;
+				end=begin;
+				isBlank=false;
+
+			}
+		}
+		else
+		{
+			if(*(end+1) == ' ' || *(end+1) == '\n')
+			{
+				reverseWord(begin,end);
+				begin=end+1;
+				isBlank=true;
+				end=begin;
 			}
 			else
 			{
 				end++;
 			}
 		}
-		else
-		{
-			reverseWord(begin,end);
-			end++;
-			begin=end;
 
-		}
+
 
 	}
 
@@ -71,8 +103,8 @@ void reserseSent(char* s)
 
 int main()
 {
-	char* sent=" I should be always try my best to do anything";
+	char sent[1000]="I should be always try my best to do anything";
 	std::cout<<"orignial sentence: "<<sent<<std::endl;
-	reserseSent(sent);
-	count<<"resersed: "<<sent<<endl;
+	reverseSent(sent);
+	cout<<"resersed: "<<sent<<endl;
 }
