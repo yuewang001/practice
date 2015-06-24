@@ -32,6 +32,7 @@ int main()
 		cout<<"index="<<index<<endl;
 		cout<<"size&j="<<(size&j)<<endl;
 		cout<<" the number of "<<(j+1)<<" value:"<<((size&index)>>j)<<endl;
+		cout<<" the number of "<<(j+1)<<" value:"<<((size>>j)&1)<<endl;
 
 
 	}
