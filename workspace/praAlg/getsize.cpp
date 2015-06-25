@@ -23,6 +23,7 @@ int main()
 
 	int size= sizeof(int);
 	cout<<" get size of type int:"<<size<<endl;
+	cout<<"get size of char:"<<sizeof(char)<<endl;
 	int index=0;
 	for(int j=0; j<size*8;j++)
 	{
