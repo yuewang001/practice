@@ -25,4 +25,8 @@ public:
 	T operator [](int x);
 };
 
+
+template <typename T> class body{
+
+};
 #endif /* TRIANGLE_H_ */
