@@ -16,13 +16,13 @@ template <typename T> class Triangle {
 
 private:
 	int N;//size of triangle
-	T* pnode; //point to the point of first node
+	T** p; //point to the point of first node
 
 public:
 	//Triangle();
 	Triangle(int n);
 	virtual ~Triangle();
-	T operator [](int x);
+	T *operator[](int aIndex);
 };
 
 
